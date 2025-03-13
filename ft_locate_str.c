@@ -1,36 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_locate_str.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 07:18:58 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:22:01 by amashhad         ###   ########.fr       */
+/*   Created: 2025/03/08 16:13:12 by amashhad          #+#    #+#             */
+/*   Updated: 2025/03/08 16:20:58 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *str1, const char *str2)
+//locates the string starting with "str" in the array
+//and returns a pointer to the entire string that's in the array
+//returns NULL in case of empty str, arr or str not found
+//MUST PROVIDE NULL TERMINATED ARRAY!!!!
+char	*ft_locate_str(char *str, char **arr)
 {
 	int		i;
-	char	*joined;
+	int		size;
 
-	i = -1;
-	if (!str1)
-		str1 = ft_strdup("");
-	if (!str2)
-		str2 = ft_strdup("");
-	if (!str1 && !str2)
+	i = 0;
+	size = 0;
+	if (!arr || !str)
 		return (NULL);
-	joined = ft_calloc(ft_strlen(str1) + ft_strlen(str2) + 1, sizeof(char ));
-	if (!joined)
+	size = ft_arrlen(arr);
+	while (i < size)
+	{
+		if (ft_strnstr(arr[i], str, ft_strlen(str)))
+			break;
+		i++;
+	}
+	if (arr[i] == NULL)
 		return (NULL);
-	while (str1[++i] != '\0')
-		joined[i] = str1[i];
-	i = -1;
-	while (str2[++i] != '\0')
-		joined[ft_strlen(str1) + i] = str2[i];
-	return (joined);
+	else
+		return (arr[i]);
 }

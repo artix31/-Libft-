@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 03:03:25 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:09:37 by amashhad         ###   ########.fr       */
+/*   Created: 2025/03/07 16:14:59 by amashhad          #+#    #+#             */
+/*   Updated: 2025/03/07 16:33:29 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmem, size_t size)
+int	ft_strcmp(const char *s1, const char *s2)
 {
-	char	*result;
-	size_t	fullsize;
 	size_t	i;
 
 	i = 0;
-	fullsize = nmem * size;
-	result = (char *)malloc(fullsize);
-	if (!result)
-		return (NULL);
-	while (i < fullsize)
+	if (!s2 || !s2)
 	{
-		result[i] = 0;
+		ft_putendl_fd("strcmp err, no s1 or no s2", 2);
+		exit(1);
+	}
+	while (s1[i] && s2[i])
+	{
+		if (s1[i] != s2[i])
+			return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 		i++;
 	}
-	return ((void *)result);
+	return ((unsigned char)(s1[i]) - (unsigned char)(s2[i]));
 }

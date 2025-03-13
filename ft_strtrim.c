@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <amashhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 10:36:07 by amashhad          #+#    #+#             */
-/*   Updated: 2024/09/10 07:18:10 by amashhad         ###   ########.fr       */
+/*   Updated: 2025/03/01 20:27:01 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 	size_t	i;
 	char	*trim;
 
+	if (!s1)
+		return (NULL);
 	p1 = ft_firstpart (s1, set);
 	p2 = 1 + ft_lastpart (s1, set);
 	i = 0;

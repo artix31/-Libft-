@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_arrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 03:03:25 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:09:37 by amashhad         ###   ########.fr       */
+/*   Created: 2025/03/04 22:13:52 by amashhad          #+#    #+#             */
+/*   Updated: 2025/03/04 22:16:32 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmem, size_t size)
+//calculates size of array, returns size of arr on success, 0 on NULL arr
+//ARRAY MUST BE NULL TERMINATED!!!!!!!!
+size_t	ft_arrlen(char **arr)
 {
-	char	*result;
-	size_t	fullsize;
-	size_t	i;
+	int	len;
 
-	i = 0;
-	fullsize = nmem * size;
-	result = (char *)malloc(fullsize);
-	if (!result)
-		return (NULL);
-	while (i < fullsize)
-	{
-		result[i] = 0;
-		i++;
-	}
-	return ((void *)result);
+	len = 0;
+	if (!arr || *arr == NULL)
+		return (0);
+	while (arr[len] != NULL)
+		len++;
+	return (len);
 }

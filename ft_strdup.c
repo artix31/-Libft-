@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <amashhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/29 04:39:16 by amashhad          #+#    #+#             */
-/*   Updated: 2024/09/05 20:18:55 by amashhad         ###   ########.fr       */
+/*   Updated: 2025/03/01 20:18:06 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,13 @@ char	*ft_strdup(const char *s)
 	char	*dup;
 	size_t	i;
 
+	if (!s)
+	{
+		ft_putendl_fd("(strdup error no string)", 2);
+		return (NULL);
+	}
 	i = ft_strlen(s);
-	dup = (char *)malloc(i * sizeof(char) + 1);
+	dup = ft_calloc(i + 1, sizeof(char ));
 	if (!dup)
 		return (0);
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 02:16:21 by amashhad          #+#    #+#             */
-/*   Updated: 2024/09/05 02:16:23 by amashhad         ###   ########.fr       */
+/*   Updated: 2025/03/01 20:23:14 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	*ft_strmapi(const char *s, char (*f)(unsigned int, char))
 	char	*string;
 
 	i = 0;
-	if (s == NULL || f == NULL)
+	if (!s || !f)
 		return (NULL);
 	while (s[i] != '\0')
 		i++;

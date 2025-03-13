@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isdigit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 02:15:40 by amashhad          #+#    #+#             */
-/*   Updated: 2024/09/05 02:15:42 by amashhad         ###   ########.fr       */
+/*   Updated: 2025/02/10 10:18:56 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_isdigit(int digit)
 {
-	if (digit >= 48 && digit <= 57)
+	if (digit >= '0' && digit <= '9')
 		return (1);
 	else
 		return (0);

@@ -1,36 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_joinstrjoin.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/09 07:18:58 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:22:01 by amashhad         ###   ########.fr       */
+/*   Created: 2025/03/01 20:37:22 by amashhad          #+#    #+#             */
+/*   Updated: 2025/03/01 21:00:47 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *str1, const char *str2)
+char	*ft_joinstrjoin(char *left, char *middle, char *right)
 {
-	int		i;
 	char	*joined;
 
-	i = -1;
-	if (!str1)
-		str1 = ft_strdup("");
-	if (!str2)
-		str2 = ft_strdup("");
-	if (!str1 && !str2)
+	if (!left)
+		ft_putendl_fd("str1 doesn't exit\n", 2);
+	if (!middle)
+		ft_putendl_fd("str2 doesn't exist\n", 2);
+	if (!right)
+		ft_putendl_fd("str3 doesn't exit\n", 2);
+	if (!left || !middle || !right)
 		return (NULL);
-	joined = ft_calloc(ft_strlen(str1) + ft_strlen(str2) + 1, sizeof(char ));
+	joined = ft_strjoin(middle, right);
 	if (!joined)
+	{
+		ft_putendl_fd("join-strjoin err\n", 2);
 		return (NULL);
-	while (str1[++i] != '\0')
-		joined[i] = str1[i];
-	i = -1;
-	while (str2[++i] != '\0')
-		joined[ft_strlen(str1) + i] = str2[i];
-	return (joined);
+	}
+	left = ft_strjoin(left, joined);
+	if (!left)
+	{
+		ft_putendl_fd("joinstrjoin err\n", 2);
+		return (NULL);
+	}
+	free(joined);
+	return (left);
 }

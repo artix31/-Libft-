@@ -1,32 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_printarr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 03:03:25 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:09:37 by amashhad         ###   ########.fr       */
+/*   Created: 2025/03/02 20:41:34 by amashhad          #+#    #+#             */
+/*   Updated: 2025/03/04 23:20:06 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmem, size_t size)
+//Prints array and returns the number of elements that would've been
+//written, returns 0 in case of error with an error message
+int	ft_printarr(char **arr)
 {
-	char	*result;
-	size_t	fullsize;
-	size_t	i;
+	int	i;
+	int	count;
 
 	i = 0;
-	fullsize = nmem * size;
-	result = (char *)malloc(fullsize);
-	if (!result)
-		return (NULL);
-	while (i < fullsize)
+	count = 0;
+	if (!arr || *arr == NULL)
 	{
-		result[i] = 0;
+		ft_putendl_fd("Printarr: Array doesn't exist\n", 2);
+		return (0);
+	}
+	while (arr[i])
+	{
+		count += ft_strlen(arr[i]);
+		ft_putendl_fd(arr[i], 1);
 		i++;
 	}
-	return ((void *)result);
+	return (count);
 }

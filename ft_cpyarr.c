@@ -1,32 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_cpyarr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 03:03:25 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:09:37 by amashhad         ###   ########.fr       */
+/*   Created: 2025/02/16 08:24:53 by amashhad          #+#    #+#             */
+/*   Updated: 2025/03/02 21:02:54 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmem, size_t size)
+int	arr_size(char **arr)
 {
-	char	*result;
-	size_t	fullsize;
-	size_t	i;
+	int		i;
 
 	i = 0;
-	fullsize = nmem * size;
-	result = (char *)malloc(fullsize);
-	if (!result)
+	if (!arr)
+		return (0);
+	while (arr[i] != NULL)
+		i++;
+	return (i);
+}
+
+char	**ft_cpyarr(char **arr)
+{
+	int		size;
+	int		i;
+	char	**temp;
+
+	i = 0;
+	size = arr_size(arr);
+	if (!size)
 		return (NULL);
-	while (i < fullsize)
+	temp = (char **)malloc(sizeof(char *) * (size + 1));
+	if (!temp)
+		return (NULL);
+	while (arr[i] != NULL)
 	{
-		result[i] = 0;
+		temp[i] = ft_strdup(arr[i]);
 		i++;
 	}
-	return ((void *)result);
+	temp[size] = NULL;
+	return (temp);
 }

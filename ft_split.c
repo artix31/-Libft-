@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <amashhad@student.42.fr>          +#+  +:+       +#+        */
+/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 20:24:14 by amashhad          #+#    #+#             */
-/*   Updated: 2024/09/09 21:19:15 by amashhad         ###   ########.fr       */
+/*   Updated: 2025/02/02 18:48:48 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,14 @@ static char	**ft_free(char **string)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	char	**string;
 	int		wordcount;
 
 	if (!s)
 	{
-		string = malloc(sizeof(char) * 1);
+		string = malloc(sizeof(char *) * 1);
 		if (!string)
 			return (NULL);
 		*string = NULL;
@@ -115,12 +115,13 @@ char	**ft_split(char const *s, char c)
 	string = (char **)malloc(sizeof(*string) * (wordcount + 1));
 	if (!string)
 		return (NULL);
-	if (ft_mallocfinal(string, s, c))
+	string = ft_mallocfinal(string, s, c);
+	if (!string)
+		ft_free(string);
+	else
 	{
 		ft_wordcpy(string, s, c);
 		string[wordcount] = NULL;
 	}
-	else
-		string = ft_free(string);
 	return (string);
 }

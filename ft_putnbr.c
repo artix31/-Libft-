@@ -1,32 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 03:03:25 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:09:37 by amashhad         ###   ########.fr       */
+/*   Created: 2024/09/18 09:33:42 by amashhad          #+#    #+#             */
+/*   Updated: 2025/01/11 08:32:20 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-void	*ft_calloc(size_t nmem, size_t size)
+int	ft_putnbr(int nb)
 {
-	char	*result;
-	size_t	fullsize;
-	size_t	i;
+	int	count;
 
-	i = 0;
-	fullsize = nmem * size;
-	result = (char *)malloc(fullsize);
-	if (!result)
-		return (NULL);
-	while (i < fullsize)
+	count = 0;
+	if (nb == -2147483648)
 	{
-		result[i] = 0;
-		i++;
+		count += ft_putstr("-2147483648");
 	}
-	return ((void *)result);
+	else
+	{
+		if (nb < 0)
+		{
+			count += ft_putchar('-');
+			nb = -nb;
+		}
+		if (nb >= 10)
+		{
+			count += ft_putnbr(nb / 10);
+			nb = nb % 10;
+		}
+		if (nb < 10)
+		{
+			count += ft_putchar(nb + '0');
+		}
+	}
+	return (count);
 }

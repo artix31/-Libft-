@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/10 01:09:51 by amashhad          #+#    #+#             */
-/*   Updated: 2024/09/10 01:09:58 by amashhad         ###   ########.fr       */
+/*   Created: 2024/09/18 09:33:50 by amashhad          #+#    #+#             */
+/*   Updated: 2025/01/11 08:32:23 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-int	ft_lstsize(t_list *lst)
+#include "ft_printf.h"
+
+int	ft_putstr(char *s)
 {
-	int	size;
+	int	i;
 
-	size = 0;
-	while (lst)
+	i = 0;
+	if (!s)
 	{
-		lst = lst->next;
-		size++;
+		write(1, "(null)", 6);
+		return (6);
 	}
-	return (size);
+	while (s[i])
+	{
+		ft_putchar(s[i]);
+		i++;
+	}
+	return (i);
 }

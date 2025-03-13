@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: amashhad <amashhad@student.42amman.com>    +#+  +:+       +#+        */
+/*   By: amashhad <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/29 03:03:25 by amashhad          #+#    #+#             */
-/*   Updated: 2025/03/01 20:09:37 by amashhad         ###   ########.fr       */
+/*   Created: 2024/12/23 04:05:57 by amashhad          #+#    #+#             */
+/*   Updated: 2024/12/23 04:07:18 by amashhad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmem, size_t size)
+void	*ft_realloc(void *ptr, size_t size)
 {
-	char	*result;
-	size_t	fullsize;
-	size_t	i;
+	void	*str;
 
-	i = 0;
-	fullsize = nmem * size;
-	result = (char *)malloc(fullsize);
-	if (!result)
+	str = malloc(size);
+	if (!str)
 		return (NULL);
-	while (i < fullsize)
+	str = ft_memcpy(str, ptr, size);
+	if (!str)
 	{
-		result[i] = 0;
-		i++;
+		free(str);
+		return (NULL);
 	}
-	return ((void *)result);
+	return (str);
 }
